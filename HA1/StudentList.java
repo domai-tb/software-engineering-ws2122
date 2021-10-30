@@ -9,9 +9,13 @@ public class StudentList
     // constructors
     StudentList() {
 
+        // TODO
+
     }
 
     StudentList(StudentList StudentList) {
+
+        // TODO
 
     }
 
@@ -153,5 +157,14 @@ public class StudentList
         // TODO
 
         return contains;
+    }
+
+    @Override
+    public String toString() {
+        String studentListAsString = "";
+
+        // TODO
+
+        return studentListAsString;
     }
 }

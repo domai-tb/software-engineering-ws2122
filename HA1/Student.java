@@ -61,7 +61,16 @@ public class Student
 
     // methods
     public String getName() {
-        String name = getFirstname() + getLastname();
+        String name = getFirstname() + " " + getLastname();
         return name;
+    }
+
+    @Override
+    public String toString() {
+        String studentAsString = getName() + " " +
+                                 getStudentID() + " " + 
+                                 getWeigth() + " " +
+                                 getBirthday();
+        return studentAsString;
     }
 }
