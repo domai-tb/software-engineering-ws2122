@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Student 
 {
-    String firstname;
-    String lastname; 
-    long studentID;
-    double weigth;
-    Date birthday;
+    private String firstname;
+    private String lastname; 
+    private long studentID;
+    private double weigth;
+    private Date birthday;
 
     public enum SortKey {FIRSTNAME, LASTNAME, STUDENT_ID, WEIGHT, BIRTHDAY}
 
