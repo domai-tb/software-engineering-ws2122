@@ -1,4 +1,12 @@
-package HA1;
+/**
+ * 
+ * @author Linus Pieper 108019211982
+ * @author Tim Barsch   108019210718
+ * 
+ */
+
+
+ package HA1;
 
 import java.util.Date;
 

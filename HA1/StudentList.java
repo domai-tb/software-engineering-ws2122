@@ -1,22 +1,38 @@
+/**
+ * 
+ * @author Linus Pieper 108019211982
+ * @author Tim Barsch   108019210718
+ * 
+ */
+
+
 package HA1;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class StudentList
 {
+    private ArrayList<Student> Students;
+
     // constructors
     StudentList() {
-
-        // TODO
-
+        this.Students = new ArrayList<Student>();
     }
 
     StudentList(StudentList StudentList) {
+        this.Students = new ArrayList<Student>();
 
-        // TODO
-
+        for (Student s : StudentList.Students) {
+            Student TempStudent = new Student(s.getFirstname(), 
+                                              s.getLastname(), 
+                                              s.getStudentID(), 
+                                              s.getWeigth(), 
+                                              new Date(s.getBirthday().getTime())); 
+            this.Students.add(TempStudent);
+        }
     }
 
     /**
@@ -27,10 +43,13 @@ public class StudentList
      * 
      * @return <b>success</b> - True if student was successfully added to the list. 
      */
-    boolean add(Student student) {
+    public boolean add(Student student) {
         boolean success = false;
 
-        // TODO
+        if (!containsId(student.getStudentID())) {
+            Students.add(student);
+            success = true;
+        }
 
         return success;
     }
@@ -43,10 +62,13 @@ public class StudentList
      * 
      * @return <b>success</b> - True if student was successfully removed from the list. 
      */
-    boolean remove(Student student) {
+    public boolean remove(Student student) {
         boolean success = false;
 
-        // TODO
+        if (containsId(student.getStudentID())) {
+            Students.remove(student);
+            success = true;
+        }
 
         return success;
     }
@@ -59,10 +81,13 @@ public class StudentList
      * 
      * @return <b>removedStudent</b> - The removed student or null.
      */
-    Student remove(int pos) {
+    public Student remove(int pos) {
         Student removedStudent = null;
 
-        // TODO
+        if (0 <= pos && pos < size()) {
+            removedStudent = get(pos);
+            Students.remove(pos);
+        }
 
         return removedStudent;
     }
@@ -74,10 +99,12 @@ public class StudentList
      * 
      * @return <b>student</b> - The student at this position or null.
      */
-    Student get(int pos) {
+    public Student get(int pos) {
         Student student = null;
 
-        // TODO
+        if (0 <= pos && pos < size()) {
+            student = Students.get(pos);
+        }
 
         return student;
     }
@@ -90,10 +117,14 @@ public class StudentList
      * 
      * @return <b>lastnameList</b> - A list of positions of matched students. 
      */
-    ArrayList<Integer> findLastname(String lastname) {
+    public ArrayList<Integer> findLastname(String lastname) {
         ArrayList<Integer> lastnameList = new ArrayList<Integer>();
 
-        // TODO
+        for (int i = 0; i < size(); i++) {
+            if (Students.get(i).getLastname() == lastname) {
+                lastnameList.add(i);
+            }
+        }
 
         return lastnameList;
     }
@@ -106,10 +137,14 @@ public class StudentList
      * 
      * @return <b>firstnameList</b> - A list of positions of matched students. 
      */
-    ArrayList<Integer> findFirstname(String firstname) {
+    public ArrayList<Integer> findFirstname(String firstname) {
         ArrayList<Integer> firstnameList = new ArrayList<Integer>();
 
-        // TODO
+        for (int i = 0; i < size(); i++) {
+            if (Students.get(i).getFirstname() == firstname) {
+                firstnameList.add(i);
+            }
+        }
 
         return firstnameList;
     }
@@ -122,10 +157,15 @@ public class StudentList
      * 
      * @return <b>position</b> - The positionn of the student or -1.
      */
-    int findStudentId(long studentId) {
+    public int findStudentId(long studentId) {
         int position = -1;
 
-        // TODO
+        for (int i = 0; i < size(); i++) {
+            if (Students.get(i).getStudentID() == studentId) {
+                position = i;
+                break;
+            }
+        }
 
         return position;
     }
@@ -135,12 +175,8 @@ public class StudentList
      * 
      * @return <b>bize</b> - The number of students.
      */
-    int size() {
-        int size = 0;
-
-        // TODO
-
-        return size;
+    public int size() {
+        return Students.size();
     }
 
     /**
@@ -151,19 +187,82 @@ public class StudentList
      * 
      * @return <b>contains</b> - True if the list contains the studentID.
      */
-    private boolean containsId(final long studentId) {
+    public boolean containsId(final long studentId) {
         boolean contains = false;
 
-        // TODO
+        for (Student s : Students) {
+            if (s.getStudentID() == studentId) {
+                contains = true;
+                break;
+            }
+        }
 
         return contains;
+    }
+
+    public void sort(Student.SortKey key) {
+        // Selection sort 
+        int n = size();
+        ArrayList<Student> tmpList = new ArrayList<Student>();
+
+        for (int i = n-1; i >= 0 ; i--)
+        {
+            Student tmpStudent = Students.get(i);
+            for (int j = i-1; j >= 0; j--)
+            {
+                switch (key) {
+                    case FIRSTNAME:
+                        if (tmpStudent.getFirstname().compareTo(Students.get(j).getFirstname()) > 0)
+                        {
+                            tmpStudent = Students.get(j);
+                        }
+                        break;
+
+                    case LASTNAME:
+                        if (tmpStudent.getLastname().compareTo(Students.get(j).getLastname()) > 0)
+                        {
+                            tmpStudent = Students.get(j);
+                        }
+                        break;
+
+                    case STUDENT_ID:
+                        if (tmpStudent.getStudentID() > Students.get(j).getStudentID())
+                        {
+                            tmpStudent = Students.get(j);
+                        }
+                        break;
+
+                    case WEIGHT:
+                        if (tmpStudent.getWeigth() > Students.get(j).getWeigth())
+                        {
+                            tmpStudent = Students.get(j);
+                        }
+                        break;
+
+                    case BIRTHDAY:
+                        if (tmpStudent.getBirthday().after(Students.get(j).getBirthday()))
+                        {
+                            tmpStudent = Students.get(j);
+                        }
+                        break;
+                    
+                    default:
+                        return;
+                }        
+            }                
+            tmpList.add(tmpStudent);
+            Students.remove(tmpStudent);
+        }
+        Students = tmpList;
     }
 
     @Override
     public String toString() {
         String studentListAsString = "";
 
-        // TODO
+        for (Student s : Students) {
+            studentListAsString += s.toString() + "\n";
+        }
 
         return studentListAsString;
     }
