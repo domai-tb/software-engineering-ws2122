@@ -1,5 +1,5 @@
 /**
- * 
+ * Group: AG1605
  * @author Linus Pieper 108019211982
  * @author Tim Barsch   108019210718
  * 
@@ -49,11 +49,24 @@ public class Main
 
         StudentList COPY_STUDENTS = new StudentList(STUDENTS);
         COPY_STUDENTS.remove(students[3]);
-        COPY_STUDENTS.add(students[3]);
-        COPY_STUDENTS.get(42);
-
-        //System.out.print(COPY_STUDENTS.toString() + "\n\n");
-        //System.out.print(STUDENTS.toString() + "\n\n");
-
+        System.out.print("Remove by Student from Copy done\n");
+        System.out.print(STUDENTS.toString() + "\n\n");
+        System.out.print(COPY_STUDENTS.toString() + "\n\n");
+        COPY_STUDENTS.remove(3);
+        System.out.print("Remove by ID from Copy done\n");
+        System.out.print(STUDENTS.toString() + "\n\n");
+        System.out.print(COPY_STUDENTS.toString() + "\n\n");
+        students[5] = COPY_STUDENTS.remove(5);
+        System.out.print("Remove by ID from Copy done\n");
+        System.out.print(STUDENTS.toString() + "\n\n");
+        System.out.print(COPY_STUDENTS.toString() + "\n\n");
+        COPY_STUDENTS.remove(6);
+        System.out.print("Remove by ID from Copy done\n");
+        System.out.print(STUDENTS.toString() + "\n\n");
+        System.out.print(COPY_STUDENTS.toString() + "\n\n");
+        COPY_STUDENTS.add(students[5]);
+        System.out.print("Add To Copy done\n");
+        System.out.print(STUDENTS.toString() + "\n\n");
+        System.out.print(COPY_STUDENTS.toString() + "\n\n");
     }
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ * Group: AG1605
  * @author Linus Pieper 108019211982
  * @author Tim Barsch   108019210718
  * 
@@ -201,7 +201,8 @@ public class StudentList
     }
 
     public void sort(Student.SortKey key) {
-        // Selection sort 
+        // search Student with "smallest" keyword(beginning at the end),
+        // add to tmpList and then update original list with tmpList
         int n = size();
         ArrayList<Student> tmpList = new ArrayList<Student>();
 
