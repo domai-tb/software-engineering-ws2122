@@ -6,40 +6,29 @@
  */
 
 
-package HA2;
+/*package HA2;
 
 
 public class Main 
 {
-    public static int factor, random, increment, max, start;
+    private static int get_random(int random) {
+        int factor = 623;
+        int increment = 525;
+        int max = 1000;
 
-    public static int Random() {
-        random = ((factor*random)+increment) % max;
-        return random;
-    }
-    
-    public static void RandomSeed(int seed) {
-        start = seed;
-    }
-    
-    public static void Initialize() {
-        factor = 623;
-        increment = 525;
-        max = 1000;
-        start = 157;
-        random = ((factor*start)+increment) % max;
-    }
+        return ((factor*random)+increment) % max;
+    }   
 
     public static void main(String args[])
     {
-        Initialize();
+        int random = 42;
 
         System.out.println("Random seed the generator? (y/n) ");
-        RandomSeed(2345);
 
         while (true) {
             if ( System.console().readLine().equals("y") ) {
-                System.out.println(Random());
+                random = get_random(random);
+                System.out.println(random);
                 System.out.println("Another random number? (y/n) ");
             } else {
                 System.out.println("Program ended with exit code: 0");
@@ -47,4 +36,4 @@ public class Main
             }
         }
     }
-}
+}*/
