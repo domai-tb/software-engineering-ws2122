@@ -6,7 +6,7 @@
  */
 
 
-/*package HA2;
+package HA2;
 
 
 public class Main 
@@ -36,4 +36,4 @@ public class Main
             }
         }
     }
-}*/
+}

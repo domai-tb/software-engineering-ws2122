@@ -6,11 +6,9 @@
  */
 
 
-/*package HA2;
-
+package HA2;
 
 import HA2.Rndm;
-
 
 public class Main 
 {
@@ -33,4 +31,3 @@ public class Main
         }
     }
 }
-*/
