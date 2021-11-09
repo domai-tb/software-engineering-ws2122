@@ -16,10 +16,12 @@ public class apartment {
 
    private void updateNeighbours(room newroom) throws Exception
    {
+       int index;
         for (room r : newroom.getNeighbours()) {
             if (rooms.contains(r))
             {
-                rooms.inde
+                index = rooms.indexOf(r);
+                rooms.get(index).addNeighbour(newroom);
                 
             } else
                 throw new Exception("Neighbour does not exist");
