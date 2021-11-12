@@ -1,12 +1,21 @@
+/**
+ * Group: AG1605
+ * @author Linus Pieper 108019211982
+ * @author Tim Barsch   108019210718
+ * 
+ */
+
 package HA3;
+
 
 import java.util.ArrayList;
 
-public class Kitchen extends room{
+
+public class Kitchen extends Room{
     
     private Boolean stove_on;
     
-    Kitchen(String name, ArrayList<room> neighbours)
+    Kitchen(String name, ArrayList<Room> neighbours)
     {
         super(name, neighbours);
         stove_on = false;
@@ -22,10 +31,9 @@ public class Kitchen extends room{
         stove_on = !stove_on;
 
         if (stove_on)
-        {
-            //TODO print status of Stove
-        }else
-            //TODO print status of Stove
+            System.out.print("The stove is open.\n\n");
+        else
+            System.out.print("The stove is close.\n\n");
     }
 
     public void enter()
