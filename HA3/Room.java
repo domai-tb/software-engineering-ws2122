@@ -16,14 +16,12 @@ public class Room
     private String name;
     private ArrayList<Room> neighbours;
     private Boolean light_on;
-    //private int optionnumber;
 
     Room(String name) 
     {
         this.neighbours = new ArrayList<Room>();
         this.name = name;
         this.light_on = false;
-        //this.optionnumber = 0;
     }
 
     Room(String name, ArrayList<Room> neighbours)
@@ -31,7 +29,6 @@ public class Room
         this.neighbours = neighbours;
         this.name = name;
         this.light_on = false;
-        //this.optionnumber = 0;
     }
 
     //Getter
@@ -47,8 +44,10 @@ public class Room
     }
 
     public ArrayList<Room> getNeighbours() {
-        return neighbours;
+        return this.neighbours;
     }
+
+    /* public methods */
 
     public void switchLight()
     {
@@ -64,23 +63,14 @@ public class Room
     {
         if (!neighbours.contains(neighbour))
             neighbours.add(neighbour);
+        if (!neighbour.neighbours.contains(this))
+            neighbour.neighbours.add(this);
     }
 
     public void addNeighbours(ArrayList<Room> neighbours_to_add)
     {
         for (Room r : neighbours_to_add) {
-            if (!neighbours.contains(r))
-                neighbours.add(r);
+            addNeighbour(r);
         }
-    }
-    
-    public void enter()
-    {
-        // print informations about the room
-        System.out.print("You are in the" + this.name + "\n\n");
-        if (light_on)
-            System.out.print("The light is on\n\n");
-        else
-            System.out.print("The light is off\n\n");
     }
 }

@@ -15,6 +15,12 @@ public class Kitchen extends Room{
     
     private Boolean stove_on;
     
+    Kitchen(String name) 
+    {
+        super(name);
+        stove_on = false;
+    }
+
     Kitchen(String name, ArrayList<Room> neighbours)
     {
         super(name, neighbours);
@@ -34,15 +40,5 @@ public class Kitchen extends Room{
             System.out.print("The stove is open.\n\n");
         else
             System.out.print("The stove is close.\n\n");
-    }
-
-    public void enter()
-    {
-        super.enter();
-        //TODO do additional/ stuff for the Kitchen
-        if (stove_on)
-            System.out.print("The stove is on\n\n");
-        else
-            System.out.print("The stove is off\n\n");
     }
 }
