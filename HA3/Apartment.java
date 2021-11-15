@@ -63,7 +63,8 @@ public class Apartment {
             try {
                 updateNeighbours(r);
             } catch(Exception e) {
-                // TODO Exception Handling
+                e.printStackTrace();
+                System.out.print("Internal / Unexprected Error.\n");
             }      
         }    
     }
@@ -84,10 +85,5 @@ public class Apartment {
     public Boolean status_privious_rooms()
     {
         return privious_rooms.isEmpty();
-    }
-
-    public void enter()
-    {
-        // Idea: this.current_room = new_room;
     }
 }
